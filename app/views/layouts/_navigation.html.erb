@@ -1,6 +1,6 @@
 <div class="ui inverted menu">
   <div class="ui container">
-    <a class="red item">Chat</a>
+    <%= link_to "Chat", root_path, class: 'red item' %>
     <a class="orange item">Messages</a>
     <a class="yellow item">Yellow</a>
     <a class="olive item">Olive</a>
@@ -12,7 +12,7 @@
       <div class="menu">
         <a class="item"><i class="edit icon"></i> Edit Profile</a>
         <a class="item"><i class="globe icon"></i> Log Out</a>
-        <a class="item"><i class="settings icon"></i> Log In</a>
+        <%= link_to "<i class='globe icon'></i> Log In".html_safe, login_path, class: 'item' %>
         <a class="item"><i class="settings icon"></i> Sing Up</a>
       </div>
     </div>
