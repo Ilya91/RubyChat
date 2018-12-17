@@ -1,0 +1,17 @@
+<div class="comment">
+  <a class="avatar">
+    <img src="/images/avatar/small/matt.jpg">
+  </a>
+  <div class="content">
+    <a class="author"><%= message.user.username %></a>
+    <div class="metadata">
+      <span class="date"><%= message.created_at.strftime('%Y-%m-%d') %></span>
+    </div>
+    <div class="text">
+      <%= message.body %>
+    </div>
+    <div class="actions">
+      <a class="reply">Reply</a>
+    </div>
+  </div>
+</div>
