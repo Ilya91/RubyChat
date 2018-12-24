@@ -10,10 +10,12 @@
       Account
       <i class="dropdown icon"></i>
       <div class="menu">
-        <a class="item"><i class="edit icon"></i> Edit Profile</a>
-        <%= link_to "<i class='logout icon'></i> Log Out".html_safe, logout_path, class: 'item' %>
-        <%= link_to "<i class='login icon'></i> Log In".html_safe, login_path, class: 'item' %>
-        <a class="item"><i class="settings icon"></i> Sing Up</a>
+        <% if logged_in? %>
+          <%= link_to "<i class='logout icon'></i> Log Out".html_safe, logout_path, :method => :delete, class: 'item' %>
+        <% else %>
+          <%= link_to "<i class='login icon'></i> Log In".html_safe, login_path, class: 'item' %>
+          <%= link_to "<i class='signup icon'></i> Sing Up".html_safe, signup_path, class: 'item' %>
+        <% end %>
       </div>
     </div>
   </div>

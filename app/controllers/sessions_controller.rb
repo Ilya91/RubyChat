@@ -23,4 +23,19 @@ class SessionsController < ApplicationController
   def signup
     @user = User.new
   end
+
+  def register
+    @user = User.new(register_params)
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome to the blog #{@user.username}"
+      redirect_to root_path
+    else
+      render 'signup'
+    end
+  end
+
+  def register_params
+    params.require(:session).permit(:username, :email, :password)
+  end
 end
