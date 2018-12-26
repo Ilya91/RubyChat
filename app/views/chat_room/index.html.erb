@@ -18,16 +18,33 @@
     </div>
   </div>
   <div class="twelve wide column">
-    <div class="ui small comments" id="messages">
+    <div class="ui small comments">
       <h3 class="ui dividing header">Messages</h3>
-      <%= render @messages %>
-      <%= form_for(@message, html: {class: 'ui reply form', role: 'form'}, url: message_path) do |f| %>
+      <div id="messages">
+        <%= render @messages %>
+      </div>
         <div class="field">
-          <%= f.text_area :body, placeholder: 'Message' %>
+          <textarea name="" id="msg" cols="30" rows="10"></textarea>
         </div>
-        <%= f.button 'Send', class: 'ui blue labeled submit icon button' %>
-      <% end %>
+        <button id="send" class="ui blue labeled submit icon button">Send</button>
     </div>
 
   </div>
   </div>
+<script>
+    $(document).ready(function(){
+        /* RECEIVE MESSAGE */
+        App.chat.received = function(data)
+        {
+            var message = ''
+            $("#messages").append("<div class='comment'><a class='avatar'><img src='/images/avatar/small/matt.jpg'> </a> <div class='content'> <a class='author'></a> <div class='metadata'> <span class='date'></span> </div> <div class='text'>" + data['message'] + " </div> <div class='actions'> <a class='reply'>Reply</a> </div> </div> </div>")
+        }
+
+        $("#send").click(function(){
+            msg = $("#msg").val()
+
+            /* SEND MESSAGE */
+            App.chat.send_msg(msg)
+        })
+    })
+</script>
