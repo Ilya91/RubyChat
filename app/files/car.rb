@@ -12,6 +12,11 @@ module FuelTank
 end
 
 module Debugger
+  def self.included(base)
+    base.extend ClassMethods
+    base.send :include, InstanceMethods
+  end
+
   module ClassMethods
     def debug(log)
       puts "!!!DEBUG: #{log} !!!"
@@ -31,8 +36,9 @@ end
 
 class Car
   include FuelTank
-  extend Debugger::ClassMethods
-  include Debugger::InstanceMethods
+  include Debugger
+  # extend Debugger::ClassMethods
+  # include Debugger::InstanceMethods
   # attr_writer :engine_volume
   # attr_reader :engine_volume, :speed
   attr_accessor :speed, :engine_volume
@@ -81,7 +87,8 @@ end
 
 class MotorBike
   include FuelTank
-  extend Debugger::ClassMethods
-  include Debugger::InstanceMethods
+  # extend Debugger::ClassMethods
+  # include Debugger::InstanceMethods
+  include Debugger
   debug 'Debug motorbike'
 end
