@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :railway_stations
+  get 'thought', to: 'thought#index'
   root 'chat_room#index'
   get 'signup', to: 'sessions#signup'
   post 'register', to: 'sessions#register'
