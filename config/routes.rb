@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :trains
 
+  namespace :admin do
+    resources :routes
+  end
   post 'message', to: 'messages#create'
 
   mount ActionCable.server => "/cable"
